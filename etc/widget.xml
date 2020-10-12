@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="featured_product_slider" class="AHT\Featured\Block\Catalog\Product\ListProduct" is_email_compatible="false" placeholder_image="Magento_Widget::placeholder.gif">
+   	 <label translate="true">Featured product list</label>
+   	 <description translate="true">List of Featured Products widget</description>
+    <parameters>
+        <parameter name="title" xsi:type="text" required="true" visible="true">
+            <label translate="true">Title (frontend)</label>
+        </parameter>
+        <parameter name="displaytype" xsi:type="select" visible="true" required="true" sort_order="20">
+                <label translate="true">display type</label>
+                <options>
+                    <option name="list" value="list">
+                        <label>list</label>
+                    </option>
+                    <option name="slider" value="slider" selected="true">
+                        <label>slider</label>
+                    </option>
+                </options>
+        </parameter>
+        <parameter name="slidetoshow" xsi:type="select" visible="true" required="true" sort_order="30">
+                <label translate="true">Slide to Show</label>
+                <depends>
+                    <parameter name="displaytype" value="slider" />
+                </depends>
+                <options>
+                    <option name="3" value="3">
+                        <label>3 items</label>
+                    </option>
+                    <option name="4" value="4" selected="true">
+                        <label>4 items</label>
+                    </option>
+                    <option name="5" value="5">
+                        <label>5 items</label>
+                    </option>
+                </options>
+        </parameter>
+      
+        <parameter name="template" xsi:type="select" required="true" visible="true">
+            <label translate="true">Template</label>
+            <options>
+                <option name="default" value="product/slider/list.phtml" selected="true">
+                    <label translate="true">Featured Product list </label>
+                </option>
+            </options>
+        </parameter>
+
+    </parameters>
+
+    </widget>
+</widgets>
