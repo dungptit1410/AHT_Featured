@@ -69,6 +69,8 @@ class ListProduct extends AbstractProduct implements IdentityInterface
      */
     protected $categoryRepository;
 
+    private $_objectManager;
+
     /**
      * @param Context $context
      * @param PostHelper $postDataHelper
@@ -83,12 +85,15 @@ class ListProduct extends AbstractProduct implements IdentityInterface
         Resolver $layerResolver,
         CategoryRepositoryInterface $categoryRepository,
         Data $urlHelper,
+        \Magento\Framework\ObjectManagerInterface $objectmanager,
         array $data = []
     ) {
         $this->_catalogLayer = $layerResolver->get();
         $this->_postDataHelper = $postDataHelper;
         $this->categoryRepository = $categoryRepository;
         $this->urlHelper = $urlHelper;
+        $this->_objectManager = $objectmanager;
+
         parent::__construct(
             $context,
             $data
@@ -128,6 +133,10 @@ class ListProduct extends AbstractProduct implements IdentityInterface
     public function getLayer()
     {
         return $this->_catalogLayer;
+    }
+
+    public function getValueConfig() {
+        return $this->_objectManager->get('AHT\Featured\Helper\Data');
     }
 
     /**
